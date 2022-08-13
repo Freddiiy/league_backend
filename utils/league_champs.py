@@ -12,10 +12,16 @@ def get_champions_version(version: str):
     return requests.get(f"https://ddragon.leagueoflegends.com/cdn/{version}/data/en_US/champion.json").json()
 
 
-def get_champ(champ_name: str):
-    champ_name = champ_name.capitalize()
-    return requests.get(f"https://ddragon.leagueoflegends.com/cdn/12.15.1/data/en_US/champion/{champ_name}.json").json()
+def get_champ(champ: str):
+    champ = champ.capitalize()
+    return requests.get(f"https://ddragon.leagueoflegends.com/cdn/12.15.1/data/en_US/champion/{champ}.json").json()
 
 
-def get_champ_img(champ_name: str):
-    return requests.get(f"https://ddragon.leagueoflegends.com/cdn/12.15.1/img/champion/{champ_name}.png").json()
+def get_champ_img(champ: str):
+    champ = champ.capitalize()
+    champ_assets = {
+        "spash": f"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/{champ}_0.jpg",
+        "loading": f"https://ddragon.leagueoflegends.com/cdn/img/champion/loading/{champ}.jpg",
+        "square": f"https://ddragon.leagueoflegends.com/cdn/img/champion/loading/{champ}_0.jpg",
+    }
+    return champ_assets

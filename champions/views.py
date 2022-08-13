@@ -18,4 +18,4 @@ def get_champ(request, champ_name: str):
 
 @api_view(['GET'])
 def get_champ_asset(request, champ_name: str):
-    return Response()
+    return Response(league_champs.get_champ_img(champ_name))
